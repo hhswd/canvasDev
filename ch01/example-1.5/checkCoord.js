@@ -1,7 +1,29 @@
+// initialization
 var readout = document.getElementById("readout"),
     canvas = document.getElementById("canvas"),
     context = canvas.getContext("2d"),
     spritesheet = new Image();
+
+spritesheet.src = "images/running-sprite-sheet.png";
+spritesheet.onload = function(e){
+  drawSpritesheet();
+};
+
+drawBackground();
+
+/**
+ * 鼠标事件响应
+ * @param  {[type]} e [description]
+ * @return {[type]}   [description]
+ */
+canvas.onmousemove = function(e){
+  var loc = windowToCanvas(canvas, e.clientX, e.clientY);
+
+  drawBackground();
+  drawSpritesheet();
+  drawGuidelines(loc.x, loc.y);
+  updateReadout(loc.x, loc.y);
+};
 
 /**
  * 转换鼠标窗口坐标为画布坐标
@@ -18,10 +40,16 @@ function windowToCanvas(canvas, x, y){
   };
 }
 
+/**
+ * 绘制背景水平分隔线
+ * @return {[type]} [description]
+ */
 function drawBackground(){
   var VERTICAL_LINE_SPACING = 12,
       i = context.canvas.height;
+  // 清除画布
   context.clearRect(0,0,canvas.width,canvas.height);
+  // 画水平分隔线
   context.strokeStyle = 'lightgray';
   context.lineWidth = 0.5;
 
@@ -34,6 +62,10 @@ function drawBackground(){
   }
 }
 
+/**
+ * 绘制精灵图片
+ * @return {[type]} [description]
+ */
 function drawSpritesheet(){
   context.drawImage(spritesheet,0,0);
 }
@@ -80,24 +112,7 @@ function updateReadout(x, y){
   readout.innerText = '(' + x.toFixed(0) + ', ' + y.toFixed(0) + ')';
 }
 
-/**
- * 鼠标事件响应
- * @param  {[type]} e [description]
- * @return {[type]}   [description]
- */
-canvas.onmousemove = function(e){
-  var loc = windowToCanvas(canvas, e.clientX, e.clientY);
 
-  drawBackground();
-  drawSpritesheet();
-  drawGuidelines(loc.x, loc.y);
-  updateReadout(loc.x, loc.y);
-};
 
-// initialization
-spritesheet.src = "images/running-sprite-sheet.png";
-spritesheet.onload = function(e){
-  drawSpritesheet();
-};
 
-drawBackground();
+
