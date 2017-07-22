@@ -90,7 +90,7 @@ function drawGuidelines(x, y){
  */
 function drawVerticalLine(x){
   context.beginPath();
-  context.moveTo(x+0.5,0);
+  context.moveTo(x+0.5,0); // 画线的精确坐标？
   context.lineTo(x+0.5,canvas.height);
   context.stroke();
 }
