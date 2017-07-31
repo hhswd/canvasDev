@@ -4,10 +4,13 @@
   <title>repeat balls</title>
 </head>
 <body>
-  <input type="radio" id="repeatRadio" name="patternRadio">repeat
-  <input type="radio" id="repeatXRadio" name="patternRadio">repeatX
-  <input type="radio" id="repeatYRadio" name="patternRadio">repeatY
-  <input type="radio" id="noRepeatRadio" name="patternRadio">noRepeat
+
+  <form id="repeatPattern">
+    <input type="radio" id="repeatRadio" name="patternRadio" value="repeat"><label for="repeatRadio">repeat</label>
+    <input type="radio" id="repeatXRadio" name="patternRadio" value="repeat-x"><label for="repeatXRadio">repeatX</label>
+    <input type="radio" id="repeatYRadio" name="patternRadio" value="repeat-y"><label for="repeatYRadio">repeatY</label>
+    <input type="radio" id="noRepeatRadio" name="patternRadio" value="no-repeat" checked="true"><label for="noRepeatRadio">noRepeat</label>
+  </form>
 
   <canvas id="canvas" width="800" height="520">Canvas not supported.</canvas>
   <script src="list-2-5.js"></script>
