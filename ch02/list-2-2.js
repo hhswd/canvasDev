@@ -19,6 +19,16 @@ context.strokeRect(75,100,200,200);
 context.fillRect(90,115,170,170);
 context.fillRect(325,100,200,200);
 
+/*采用rect来描路径
+context.rect(75,100,200,200);
+context.stroke();
+
+context.rect(90,115,170,170);
+
+context.rect(325,100,200,200);
+context.fill();
+*/
+
 context.canvas.onmousedown = function(e){
   context.clearRect(0,0,canvas.width,canvas.height);
 };
